@@ -34,3 +34,10 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# Mac OS
+.DS_*
+._.DS*
+
+# Dr. Racket
+*.rkt~
