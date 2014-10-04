@@ -1,3 +1,5 @@
+#lang planet neil/sicp
+
 ;; For very small numbers (e.g., 1e-20), our hard-coded margin of error
 ;; exceeds the actual square root by several orders of magnitude - so
 ;; obviously, our answer will be wildly inaccurate.
@@ -18,9 +20,10 @@
   (/ (+ (/ x guess) guess)
      2))
 
-;; New good-enough function
+;; New good-enough function.
+;; (This substitutes cleanly into the existing sqrt-iter function,
+;; but we'll end up calculating the improved guess twice.)
 (define (good-enough? guess x)
   (define next (improve guess x))
   (< (abs (/ (- guess next) next))
      threshold))
-

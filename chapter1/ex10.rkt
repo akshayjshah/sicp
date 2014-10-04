@@ -1,9 +1,11 @@
+#lang planet neil/sicp
+
 (define (ack x y)
   (cond ((= y 0) 0)
         ((= x 0) (* 2 y))
         ((= y 1) 2)
         (else (ack (- x 1)
-                  (ack x (- y 1))))))
+                   (ack x (- y 1))))))
 
 ;; (ack 1 10) is 1024, which is 2^10
 ;; (ack 2 4) is 65,536, which is 2^(2^(2^2))
