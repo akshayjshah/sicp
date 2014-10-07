@@ -1,3 +1,16 @@
-With applicative-order evaluation, the interpreter will return ``0``. With
-normal-order evaluation, the interpreter will recurse forever, since
-``p`` is defined recursively without a base case.
+With applicative-order evaluation, the interpreter will first evaluate the
+`test` operator, then evaluate each operand. Since `p` is defined recursively
+without a base case, attempting to evaluate `(p)` creates an infinite
+recursion.
+
+With normal-order evaluation, the result is zero. The interpreter performs the
+following substitutions:
+
+```scheme
+(test 0 (p))
+(if (= 0 0) 0 (p))
+0
+```
+
+Since `if` is a special form, `(p)` is never evaluated and the process
+terminates.
